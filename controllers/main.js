@@ -49,7 +49,7 @@ const showTabPanes = (tabType) =>{
     console.log('selectTabPanes: ',selectTabPanes);
 
     const panesRow = document.createElement('div')
-    panesRow.classList.add('container')
+    panesRow.classList.add('containerTabPanes')
 
     selectTabPanes.forEach(tabPane=>{
         const panesElement = createTabPanes(tabPane);
