@@ -19,39 +19,43 @@ const renderNavItem = () => {
     document.getElementById('nav-pills').innerHTML = contentNavItem
 
     //click hiển thị các cho mỗi tab
-    navPills.forEach((navPillsItem)=>{
+    navPills.forEach((navPillsItem) => {
         const tabNameLink = document.getElementById(navPillsItem.tabName);
-        tabNameLink.addEventListener('click',()=>{
+        tabNameLink.addEventListener('click', () => {
             showTabPanes(navPillsItem.type)
         })
     })
 }
 renderNavItem()
 
-//hien thị hình ảnh trong 
-const createTabPanes = (tabPane) =>{
+//hien thị hình ảnh trong tab-content
+const createTabPanes = (tabPane) => {
     const panesElement = document.createElement('div');
     panesElement.classList.add('tab-pane');
     panesElement.id = tabPane.type;
     panesElement.innerHTML = `
-        <img src="${tabPane.imgSrc_jpg}" alt="${tabPane.name}" >
+        <img 
+            src="${tabPane.imgSrc_jpg}" 
+            alt="${tabPane.name}" 
+            onClick="handleImageClick('${tabPane.id}')">
     `;
     return panesElement;
 }
 
-const showTabPanes = (tabType) =>{
+
+const showTabPanes = (tabType) => {
     const tabContent = document.getElementById('tabPanes');
     tabContent.innerHTML = '';
 
     //hiển thị theo tabType đã chọn
-    const selectTabPanes = tabPanes.filter(tabPanes=>tabPanes.type === tabType)
+    const selectTabPanes = tabPanes.filter(tabPanes => tabPanes.type === tabType)
 
-    console.log('selectTabPanes: ',selectTabPanes);
+    console.log('selectTabPanes: ', selectTabPanes);
 
     const panesRow = document.createElement('div')
     panesRow.classList.add('containerTabPanes')
 
-    selectTabPanes.forEach(tabPane=>{
+    selectTabPanes.forEach(tabPane => {
         const panesElement = createTabPanes(tabPane);
         panesRow.appendChild(panesElement);
     })
@@ -59,7 +63,8 @@ const showTabPanes = (tabType) =>{
     tabContent.appendChild(panesRow)
 }
 
+//hiển thị quần áo lên nhân vật
+window.handleImageClick = (imageId) => {
 
-
-
-
+    console.log('ImageID:', imageId);
+};
