@@ -37,11 +37,10 @@ const createTabPanes = (tabPane) => {
         <img 
             src="${tabPane.imgSrc_jpg}" 
             alt="${tabPane.name}" 
-            onClick="handleImageClick('${tabPane.id}')">
+            onClick="handleImageClick('${tabPane.id}','${tabPane.type}')">
     `;
     return panesElement;
 }
-
 
 const showTabPanes = (tabType) => {
     const tabContent = document.getElementById('tabPanes');
@@ -64,7 +63,14 @@ const showTabPanes = (tabType) => {
 }
 
 //hiển thị quần áo lên nhân vật
-window.handleImageClick = (imageId) => {
+window.handleImageClick = (imageId,tabType) => {
 
     console.log('ImageID:', imageId);
+    console.log('tabType:', tabType);
+    let contentTryOn = '';
+    const newImage = document.createElement('img')
+    
+    // let getSelector;
+    // switch ()
+
 };
