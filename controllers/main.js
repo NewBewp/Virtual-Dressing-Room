@@ -31,8 +31,7 @@ renderNavItem()
 //hien thị hình ảnh trong tab-content
 const createTabPanes = (tabPane) => {
     const panesElement = document.createElement('div');
-    panesElement.classList.add('tab-pane');
-    panesElement.id = tabPane.type;
+
     panesElement.innerHTML = `
         <img 
             src="${tabPane.imgSrc_jpg}" 
@@ -63,14 +62,38 @@ const showTabPanes = (tabType) => {
 }
 
 //hiển thị quần áo lên nhân vật
-window.handleImageClick = (imageId,tabType) => {
+window.handleImageClick = (imageId, tabType) => {
 
     console.log('ImageID:', imageId);
     console.log('tabType:', tabType);
-    let contentTryOn = '';
-    const newImage = document.createElement('img')
-    
-    // let getSelector;
-    // switch ()
-
+    let contentImg = '';
+    let selector;
+    switch (tabType) {
+        case 'topclothes':
+            selector = '.bikinitop';
+            break;
+        case 'botclothes':
+            selector = '.bikinibottom';
+            break;
+        case 'shoes':
+            selector = '.feet';
+            break;
+        case 'handbags':
+            selector = '.handbag';
+            break;
+        case 'necklaces':
+            selector = '.necklace';
+            break;
+        case 'hairstyle':
+            selector = '.hairstyles';
+            break;
+        case 'background':
+            selector = '.backgrounds';
+            break;
+    }
+    const imageSrc = tabPanes.find(item => item.id === imageId).imgSrc_png;
+    contentImg = `
+        <img class="${tabType}" src="${imageSrc}"> 
+    `
+    document.querySelector(selector).innerHTML = contentImg;
 };
